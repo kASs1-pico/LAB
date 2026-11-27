@@ -1,0 +1,94 @@
+#caliper-panel {
+  position: fixed;
+  z-index: 54;
+  top: 84px;
+  right: 18px;
+  width: min(290px, calc(100vw - 20px));
+  max-height: calc(100dvh - 100px);
+  overflow: auto;
+  padding: 12px;
+  color: #344f69;
+  background: #f8fbfef5;
+  border: 1px solid #cfdfec;
+  border-radius: 14px;
+  box-shadow: 0 12px 35px #203d5b24;
+}
+#caliper-panel[hidden], #caliper-panel [hidden], #caliper-guides[hidden],
+.draft-sheet-open #caliper-guides, .cad-presenting #caliper-guides, .focus-mode #caliper-guides {
+  display: none;
+}
+.caliper-active #cad-overlay, .caliper-active #cad-context { visibility: hidden; }
+.caliper-active #paper-wrap { cursor: crosshair; }
+.caliper-heading, .caliper-methods, .caliper-actions { display: flex; align-items: center; gap: 6px; }
+.caliper-heading { justify-content: space-between; font-size: 14px; }
+.caliper-actions { flex-wrap: wrap; margin-top: 6px; }
+#caliper-panel button {
+  min-height: 34px;
+  padding: 6px 9px;
+  border: 1px solid #d4e1ec;
+  border-radius: 8px;
+  background: #eef4f9;
+  color: #36546f;
+  font: inherit;
+  font-size: 12px;
+}
+#caliper-close { min-width: 34px; font-size: 20px !important; }
+#caliper-panel button:hover:not(:disabled) { background: #e0edf7; }
+#caliper-panel button[aria-pressed="true"] { background: #4f7090; color: white; }
+#caliper-panel button:disabled { opacity: .55; }
+#caliper-status { margin: 7px 0; font-size: 12px; line-height: 1.4; min-height: 1.4em; }
+#caliper-value { display: block; font-size: 20px; font-weight: 650; font-variant-numeric: tabular-nums; }
+#caliper-vernier { margin-top: 8px; font-size: 12px; }
+#caliper-vernier svg { display: block; width: 100%; border-radius: 6px; background: #587c9b1f; }
+#caliper-vernier svg line { stroke: currentColor; stroke-width: 1; }
+#caliper-vernier svg text { fill: currentColor; stroke: none; text-anchor: middle; font: 10px system-ui,sans-serif; }
+#caliper-vernier p { margin: 5px 0; }
+#caliper-vernier input {
+  box-sizing: border-box;
+  width: 72px;
+  min-height: 34px;
+  border: 1px solid #6b8298;
+  border-radius: 8px;
+  background: transparent;
+  color: inherit;
+}
+#caliper-vernier output { display: block; margin-top: 5px; min-height: 1.2em; }
+#caliper-guides {
+  position: fixed;
+  z-index: 24;
+  inset: 0;
+  width: 100vw;
+  height: 100dvh;
+  pointer-events: none;
+  --caliper-stroke: #285988;
+  --caliper-paper: #f5fbff;
+}
+#caliper-guides :is(.caliper-span,.caliper-point,.caliper-cursor) {
+  stroke: var(--caliper-stroke);
+  stroke-width: 1.5;
+  fill: none;
+}
+#caliper-guides .caliper-point { fill: var(--caliper-paper); }
+#caliper-guides .caliper-cursor { stroke-width: 2; }
+#caliper-guides text {
+  fill: var(--caliper-stroke);
+  stroke: var(--caliper-paper);
+  stroke-width: 4;
+  stroke-linejoin: round;
+  paint-order: stroke;
+  text-anchor: middle;
+  font: 650 12px system-ui, sans-serif;
+}
+[data-canvas-theme="dark"] #caliper-guides { --caliper-stroke:#9dc7ef; --caliper-paper:#243647; }
+[data-canvas-theme="dark"] #caliper-panel { color: #dbe9f7; background: #243648f5; border-color: #516a81; }
+[data-canvas-theme="dark"] #caliper-panel button { color: #e2eef9; background: #354c63; border-color: #57718a; }
+[data-canvas-theme="dark"] #caliper-panel button:hover:not(:disabled),
+[data-canvas-theme="dark"] #caliper-panel button[aria-pressed="true"] { background: #526f8d; }
+@media (max-width: 600px) {
+  #caliper-panel { top: 66px; right: 10px; padding: 9px; max-height: calc(100dvh - 140px); }
+  .cad-integrated #caliper-panel { top: 114px; max-height: calc(100dvh - 165px); }
+  #caliper-panel button { min-height: 38px; }
+}
+@media (min-width: 601px) and (max-height: 500px) {
+  #caliper-panel { top: 64px; max-height: calc(100dvh - 78px); }
+}

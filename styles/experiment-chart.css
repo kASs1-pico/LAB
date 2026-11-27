@@ -1,0 +1,222 @@
+.experiment-chart {
+  --chart-grid: #d9e3ec;
+  --chart-axis: #879bae;
+  --chart-ink: #334a5f;
+  --chart-actual: #21628a;
+  --chart-math: #98501f;
+  --chart-paper: #f8fbfe;
+  --chart-rule: #c5d6e5;
+  min-width: 0;
+  color: var(--chart-ink);
+}
+
+.experiment-chart-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px 16px;
+  margin-block: 1px 8px;
+}
+
+.experiment-chart-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  padding: 3px;
+  border: 1px solid var(--chart-rule);
+  border-radius: 8px;
+  background: var(--chart-paper);
+}
+
+.experiment-chart-metrics button {
+  padding: 5px 8px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--chart-ink);
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.experiment-chart .experiment-chart-metrics button[aria-pressed="true"] {
+  border-color: var(--chart-actual);
+  background: var(--chart-actual);
+  color: var(--chart-paper);
+}
+
+.experiment-chart-key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px 20px;
+  font-size: 12px;
+}
+
+.experiment-chart-key > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.experiment-chart-key-model,
+.experiment-chart-key-analytic {
+  display: inline-block;
+  width: 22px;
+  border-top: 2px solid var(--chart-actual);
+}
+
+.experiment-chart-key-model { position: relative; }
+.experiment-chart-key-model::after {
+  position: absolute;
+  top: -4px;
+  left: 8px;
+  width: 6px;
+  height: 6px;
+  box-sizing: border-box;
+  border: 1px solid var(--chart-actual);
+  border-radius: 50%;
+  background: var(--chart-paper);
+  content: '';
+}
+
+.experiment-chart-key-analytic { border-top: 2px dashed var(--chart-math); }
+
+.experiment-chart-plot {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-width: 0;
+  border-radius: 9px;
+  background: var(--chart-paper);
+}
+
+.experiment-chart-grid { stroke: var(--chart-grid); stroke-width: 1; }
+.experiment-chart-axis { stroke: var(--chart-axis); stroke-width: 1; }
+.experiment-chart-tick,
+.experiment-chart-units {
+  fill: var(--chart-ink);
+  font-family: system-ui, sans-serif;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+.experiment-chart-units { font-weight: 600; }
+.experiment-chart-cursor {
+  stroke: var(--chart-actual);
+  stroke-width: 1;
+  stroke-dasharray: 2 3;
+  opacity: .65;
+}
+
+.experiment-chart-model,
+.experiment-chart-analytic {
+  fill: none;
+  stroke: var(--chart-actual);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.experiment-chart-analytic {
+  stroke: var(--chart-math);
+  stroke-width: 1.6;
+  stroke-dasharray: 5 4;
+}
+
+[data-experiment-sample] { cursor: pointer; outline: none; }
+.experiment-chart-hit { fill: transparent; }
+.experiment-chart-dot {
+  fill: var(--chart-paper);
+  stroke: var(--chart-actual);
+  stroke-width: 1.5;
+  pointer-events: none;
+}
+
+.experiment-chart-focus-ring {
+  fill: var(--chart-paper);
+  stroke: var(--chart-actual);
+  stroke-width: 1.5;
+  opacity: 0;
+  pointer-events: none;
+}
+
+[data-experiment-sample][aria-pressed="true"] .experiment-chart-dot { fill: var(--chart-actual); }
+[data-experiment-sample][aria-pressed="true"] .experiment-chart-focus-ring,
+[data-experiment-sample]:focus-visible .experiment-chart-focus-ring,
+[data-experiment-sample]:hover .experiment-chart-focus-ring { opacity: 1; }
+
+.experiment-chart-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 9px 16px;
+  margin-block-start: 10px;
+}
+
+.experiment-chart-selection {
+  display: grid;
+  row-gap: 5px;
+  font-size: 12px;
+}
+
+.experiment-chart-selection select {
+  min-width: 115px;
+  min-height: 36px;
+  padding: 5px 8px;
+  border: 1px solid var(--chart-rule);
+  border-radius: 8px;
+  background: var(--chart-paper);
+  color: var(--chart-ink);
+  font: inherit;
+  font-size: 14px;
+}
+
+.experiment-chart-reading {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  flex: 1 1 275px;
+  gap: 8px 14px;
+  min-width: 0;
+  padding-block: 4px;
+  font-size: 12px;
+}
+
+.experiment-chart-reading > span {
+  display: grid;
+  align-content: start;
+  gap: 3px;
+}
+
+.experiment-chart-reading strong {
+  color: var(--chart-ink);
+  overflow-wrap: anywhere;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+[data-canvas-theme="dark"] .experiment-chart {
+  --chart-grid: #3d5062;
+  --chart-axis: #7f97ab;
+  --chart-ink: #deebf6;
+  --chart-actual: #8bc9f4;
+  --chart-math: #efb185;
+  --chart-paper: #162a3c;
+  --chart-rule: #577188;
+}
+
+@media (max-width: 600px) {
+  .experiment-chart-selection select { font-size: 16px; }
+}
+
+@media (max-width: 480px) {
+  .experiment-chart-reading { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  .experiment-chart-reading > span {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 4px 8px;
+  }
+  .experiment-chart-reading strong { white-space: nowrap; overflow-wrap: normal; }
+}

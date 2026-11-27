@@ -1,0 +1,70 @@
+.measurement-journal {
+  width: min(620px,calc(100vw - 24px));
+  max-height: calc(100dvh - 32px);
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+.measurement-journal h2 { padding-inline-end: 26px; }
+.measurement-journal h3 { margin: 20px 0 8px; font-size: 13px; }
+.measurement-form,
+.measurement-fields,
+.measurement-form label { display: grid; gap: 8px; }
+.measurement-form { gap: 12px; }
+.measurement-fields { grid-template-columns: repeat(2,minmax(0,1fr)); }
+.measurement-form label > span { font-size: 12px; }
+.measurement-form :is(input,select,textarea) {
+  width: 100%;
+  min-width: 0;
+  min-height: 36px;
+  padding: 7px 9px;
+  border: 1px solid #b9ccde;
+  border-radius: 8px;
+  background: #fbfdff;
+  color: #304a63;
+  font: inherit;
+}
+.measurement-form textarea { resize: vertical; }
+.measurement-form [hidden] { display: none; }
+.measurement-form .measurement-checkbox { display: flex; align-items: center; }
+.measurement-form .measurement-checkbox input { width: auto; min-height: 0; }
+.measurement-extra { margin-top: 10px; padding: 9px; border: 1px solid #6082a16b; border-radius: 8px; }
+.measurement-extra summary { cursor: pointer; font-size: 13px; font-weight: 600; }
+.measurement-journal .measurement-extra p { margin: 8px 0; font-size: 12px; }
+.measurement-extra-output { display: block; margin: 8px 0; font-size: 12px; }
+#measurement-comparison {
+  display: block;
+  min-height: 34px;
+  padding: 8px 10px;
+  border: 1px solid #cbd9e6;
+  border-radius: 8px;
+  background: #edf3f9;
+  color: #334b62;
+  font-size: 12px;
+}
+#measurement-comparison[data-result=pass] { background: #e5f3ed; color: #225747; border-color: #9bc7b5; }
+#measurement-comparison[data-result=fail] { background: #faeeea; color: #823d2a; border-color: #dfb0a5; }
+.measurement-actions { display:flex; flex-wrap:wrap; gap:6px; }
+.measurement-journal :is(.measurement-actions button,.measurement-switch,.measurement-submit) {
+  min-height: 36px;
+  padding: 7px 10px;
+  border-radius: 8px;
+  background: #e3edf6;
+  color: #304d69;
+  font: inherit;
+  font-size: 12px;
+}
+.measurement-journal .measurement-submit { justify-self:start; background:#456584; color:white; }
+.measurement-switch { margin-top: 10px; }
+.measurement-entry { padding: 9px 0; border-top: 1px solid #b9ccde; }
+.measurement-entry summary { cursor:pointer; }
+.measurement-entry summary span { margin-inline-start: 9px; font-size: 12px; }
+.measurement-journal .measurement-entry p { margin: 6px 0; overflow-wrap:anywhere; font-size: 12px; }
+[data-canvas-theme=dark] .measurement-form :is(input,select,textarea),
+[data-canvas-theme=dark] .measurement-journal :is(.measurement-actions button,.measurement-switch) {
+  background: #253e56;
+  border-color: #55708b;
+  color: #e7f1fa;
+}
+@media (max-width:600px) {
+  .measurement-form :is(input,select,textarea) { font-size:16px; }
+}

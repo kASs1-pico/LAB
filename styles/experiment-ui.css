@@ -1,0 +1,269 @@
+.experiment-dialog {
+  --experiment-paper: #edf3f9;
+  --experiment-surface: #fbfdff;
+  --experiment-control: #f4f8fc;
+  --experiment-ink: #19324b;
+  --experiment-secondary: #455f75;
+  --experiment-border: #c6d7e4;
+  --experiment-accent: #365e82;
+  --experiment-accent-ink: white;
+  --experiment-metal: #a3c6e4;
+  --experiment-grid: #a4bfd752;
+  --experiment-error: #913d26;
+  width: min(1060px, calc(100vw - 24px));
+  max-width: none;
+  max-height: calc(100dvh - 24px);
+  padding: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  background: var(--experiment-paper);
+  border: 1px solid var(--experiment-border);
+  color: var(--experiment-ink);
+}
+[data-canvas-theme="dark"] .experiment-dialog {
+  --experiment-paper: #202e3e;
+  --experiment-surface: #28394c;
+  --experiment-control: #223244;
+  --experiment-ink: #e5eff9;
+  --experiment-secondary: #c0d3e5;
+  --experiment-border: #50677e;
+  --experiment-accent: #a6d0f3;
+  --experiment-accent-ink: #172d42;
+  --experiment-metal: #416987;
+  --experiment-grid: #6084a052;
+  --experiment-error: #f6b8a5;
+  background: var(--experiment-paper);
+}
+.experiment-dialog .experiment-header {
+  position: sticky;
+  z-index: 1;
+  inset-block-start: 0;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 18px 22px 14px;
+  background: var(--experiment-surface);
+  border-bottom: 1px solid var(--experiment-border);
+}
+.experiment-dialog h2 { margin: 0 0 3px; font-size: 24px; font-weight: 650; }
+.experiment-dialog h3 { margin: 0; font-size: 16px; font-weight: 650; }
+.experiment-dialog p { margin: 0; }
+.experiment-dialog .experiment-subtitle { color: var(--experiment-secondary); font-size: 13px; }
+.experiment-dialog button:not([hidden]) {
+  min-height: 39px;
+  padding: 7px 10px;
+  border: 1px solid var(--experiment-border);
+  border-radius: 8px;
+  background: var(--experiment-control);
+  color: var(--experiment-ink);
+  font: inherit;
+  font-size: 12px;
+}
+.experiment-dialog button:disabled { opacity: .55; }
+.experiment-dialog button:not([hidden]):not(:disabled):hover { border-color: var(--experiment-accent); }
+#experiment-close:not([hidden]) { min-width: 39px; padding: 4px; font-size: 24px; line-height: 1; }
+.experiment-dialog button.experiment-primary:not([hidden]) {
+  justify-self: start;
+  border-color: var(--experiment-accent);
+  background: var(--experiment-accent);
+  color: var(--experiment-accent-ink);
+  font-weight: 650;
+}
+.experiment-dialog .experiment-overview {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: stretch;
+  gap: 12px;
+  padding: 12px 16px 0;
+}
+.experiment-dialog .experiment-card {
+  display: grid;
+  align-content: start;
+  min-width: 0;
+  gap: 11px;
+  padding: 15px;
+  border: 1px solid var(--experiment-border);
+  border-radius: 12px;
+  background: var(--experiment-surface);
+}
+.experiment-dialog :is(.experiment-plot-card, .experiment-compare-card) { margin: 12px 16px; }
+.experiment-dialog .experiment-note { color: var(--experiment-secondary); font-size: 12px; line-height: 1.55; }
+.experiment-dialog label {
+  display: grid;
+  align-content: start;
+  min-width: 0;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 550;
+}
+.experiment-dialog label code {
+  margin-inline-start: 6px;
+  color: var(--experiment-secondary);
+  font-size: 10px;
+  font-weight: 400;
+  white-space: nowrap;
+}
+.experiment-dialog :is(input, select) {
+  width: 100%;
+  min-width: 0;
+  min-height: 39px;
+  padding: 7px 9px;
+  border: 1px solid var(--experiment-border);
+  border-radius: 8px;
+  background: var(--experiment-control);
+  color: var(--experiment-ink);
+  font: inherit;
+  font-weight: 450;
+}
+#experiment-parameters input { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
+.experiment-dialog .experiment-fields { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 11px; }
+.experiment-dialog .experiment-formula { display: grid; grid-template-rows: 1fr auto; min-width: 0; gap: 4px; }
+.experiment-dialog .experiment-formula label { grid-template-rows: 1fr auto; align-content: stretch; }
+.experiment-dialog .experiment-formula output { color: var(--experiment-secondary); font-size: 11px; }
+.experiment-dialog .experiment-status { color: var(--experiment-secondary); font-size: 12px; line-height: 1.5; }
+.experiment-dialog .experiment-error { color: var(--experiment-error); }
+.experiment-dialog .experiment-specimen {
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  border: 1px solid var(--experiment-border);
+  border-radius: 8px;
+  background-color: var(--experiment-control);
+  background-image: linear-gradient(to bottom,var(--experiment-grid) 1px,transparent 1px),
+    linear-gradient(to right,var(--experiment-grid) 1px,transparent 1px);
+  background-size: 18px 18px;
+}
+.experiment-dialog .experiment-plate { display: block; width: 100%; height: auto; max-height: 190px; }
+.experiment-dialog .experiment-plate-material { fill: var(--experiment-metal); stroke: var(--experiment-accent); stroke-width: 1.5; }
+.experiment-dialog .experiment-plate-axes { fill: none; stroke: var(--experiment-accent); stroke-width: 1; stroke-dasharray: 6 3 1 3; }
+.experiment-dialog .experiment-center-mass { fill: var(--experiment-surface); stroke: var(--experiment-accent); stroke-width: 1.4; }
+.experiment-dialog .experiment-reading-label { color: var(--experiment-secondary); font-size: 11px; }
+.experiment-dialog .experiment-metrics {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 8px;
+  margin: 0;
+}
+.experiment-dialog .experiment-metrics div {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 4px;
+  padding: 8px;
+  border-block-start: 2px solid var(--experiment-border);
+  overflow-wrap: anywhere;
+}
+.experiment-dialog .experiment-metrics dt { font-size: 11px; color: var(--experiment-secondary); }
+.experiment-dialog .experiment-metrics dd { margin: 0; font-size: 13px; }
+.experiment-dialog :is(#experiment-sweep, #experiment-variant-form) {
+  display: flex;
+  align-items: end;
+  gap: 8px;
+}
+.experiment-dialog .experiment-range-fields {
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  flex: 0 1 330px;
+}
+.experiment-dialog #experiment-variant-form label { flex: 0 1 360px; }
+.experiment-dialog .experiment-actions { display: flex; flex-wrap: wrap; gap: 6px; }
+.experiment-dialog :is(.experiment-variant-choices, .experiment-variant-previews) {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 10px;
+}
+.experiment-dialog .experiment-variant-choice { display: grid; gap: 6px; min-width: 0; }
+.experiment-dialog .experiment-small-specimen { min-width: 0; margin: 0; }
+.experiment-dialog .experiment-small-specimen .experiment-plate {
+  max-height: 140px;
+  border: 1px solid var(--experiment-border);
+  border-radius: 8px;
+  background: var(--experiment-control);
+}
+.experiment-dialog .experiment-small-specimen figcaption {
+  margin-top: 5px;
+  color: var(--experiment-secondary);
+  overflow-wrap: anywhere;
+  font-size: 12px;
+}
+#experiment-comparison-values { min-width: 0; overflow-x: auto; }
+.experiment-dialog .experiment-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+.experiment-dialog .experiment-table :is(td,th) {
+  padding: 7px 5px;
+  border-bottom: 1px solid var(--experiment-border);
+  overflow-wrap: anywhere;
+  text-align: end;
+}
+.experiment-dialog .experiment-table th:first-child { width: 32%; text-align: start; }
+.experiment-dialog .experiment-table tbody th { font-weight: 500; }
+.experiment-dialog .experiment-table-unit { color: var(--experiment-secondary); font-size: inherit; }
+.experiment-dialog :is(button, input, select):focus-visible { outline: 2px solid var(--experiment-accent); outline-offset: 1px; }
+.experiment-dialog #experiment-sweep,
+.experiment-dialog .experiment-sweep-axis {
+  display: grid;
+  align-items: start;
+  gap: 8px;
+}
+.experiment-dialog .experiment-range-fields[hidden] { display: none; }
+.experiment-dialog .experiment-extra {
+  min-width: 0;
+  padding: 8px;
+  border: 1px solid var(--experiment-border);
+  border-radius: 8px;
+}
+.experiment-dialog .experiment-extra summary { cursor: pointer; font-size: 13px; }
+.experiment-dialog .experiment-extra[open] > :not(summary) { margin-block-start: 9px; }
+.experiment-dialog #experiment-prediction {
+  width: 100%;
+  padding: 7px 9px;
+  border: 1px solid var(--experiment-border);
+  border-radius: 8px;
+  background: var(--experiment-control);
+  color: var(--experiment-ink);
+  font: inherit;
+  resize: vertical;
+}
+.experiment-dialog .experiment-overflow,
+.experiment-dialog #experiment-chart { min-width: 0; }
+.experiment-dialog .experiment-overflow { overflow: auto; }
+.experiment-dialog .experiment-heatmap { table-layout: auto; }
+.experiment-dialog .experiment-heatmap caption { text-align: start; font-size: 12px; padding: 6px 3px; }
+.experiment-dialog .experiment-heatmap th:first-child { width: auto; min-width: 75px; }
+.experiment-dialog button.experiment-heat-cell:not([hidden]) {
+  min-width: 62px;
+  white-space: nowrap;
+  color: var(--experiment-ink);
+  background: color-mix(in srgb, var(--experiment-metal) var(--heat-share), var(--experiment-surface));
+}
+.experiment-dialog .experiment-heat-cell[aria-pressed="true"] { outline: 2px solid var(--experiment-accent); }
+@media (max-width: 680px) {
+  .experiment-dialog .experiment-overview { grid-template-columns: minmax(0,1fr); }
+  .experiment-dialog .experiment-header { padding: 12px; }
+  .experiment-dialog .experiment-overview { padding-inline: 8px; }
+  .experiment-dialog :is(.experiment-plot-card, .experiment-compare-card) { margin-inline: 8px; }
+  .experiment-dialog .experiment-card { padding: 10px; }
+  .experiment-dialog :is(input, select) { font-size: 16px; }
+}
+@media (max-width: 430px) {
+  .experiment-dialog #experiment-sweep > .experiment-fields { grid-template-columns: 1fr; }
+  .experiment-dialog :is(#experiment-sweep, #experiment-variant-form) {
+    display: grid;
+    grid-template-columns: minmax(0,1fr);
+  }
+  .experiment-dialog :is(#experiment-sweep, #experiment-variant-form) button { justify-self: start; }
+  .experiment-dialog label code { display: block; margin-inline-start: 0; }
+  .experiment-dialog .experiment-table { font-size: 11px; table-layout: auto; }
+  .experiment-dialog .experiment-table :is(td,th) { padding-inline: 3px; }
+  .experiment-dialog .experiment-table th:first-child { width: 31%; }
+  .experiment-dialog .experiment-table-number { white-space: nowrap; }
+  .experiment-dialog .experiment-table-unit { display: block; font-size: 10px; }
+  .experiment-dialog .experiment-metrics div { padding-inline: 4px; }
+  .experiment-dialog .experiment-metrics dd { font-size: 12px; }
+}

@@ -1,0 +1,13 @@
+#assembly-tool { z-index: 60; }
+#assembly-tool [data-assembly-action=apply] { background: #587893; color: white; }
+#assembly-tool [data-assembly-action=apply]:disabled { opacity: .54; }
+#assembly-guides { position: fixed; inset: 0; width: 100vw; height: 100dvh; pointer-events: none; z-index: 31; overflow: hidden; }
+.assembly-editing #cad-overlay,.assembly-editing #cad-context { visibility: hidden; }
+.assembly-guide,.assembly-outline,.assembly-grid,.assembly-plane { fill: none; stroke: #6b90b0; stroke-width: 1.5; }
+.assembly-plane { fill: #b8d0e335; stroke-dasharray: 4 4; }
+.assembly-grid { stroke-width: .7; stroke: #7a9fbe; opacity: .46; }
+.assembly-outline { stroke-dasharray: 4 3; opacity: .72; }
+.assembly-point,.assembly-handle { fill: #eef6fe; stroke: #527da3; stroke-width: 1.8; }
+.assembly-handle { pointer-events: auto; cursor: move; touch-action: none; }
+.assembly-label { fill: #3d6383; stroke: #f5f9fe; stroke-width: 4; paint-order: stroke; font: 12px system-ui,sans-serif; }
+body[data-theme=dark] .assembly-label { fill: #d6eaff; stroke: #273849; }

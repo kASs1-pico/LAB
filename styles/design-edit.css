@@ -1,0 +1,103 @@
+.design-edit-panel {
+  position: fixed;
+  z-index: 61;
+  top: 82px;
+  right: 18px;
+  width: min(275px, calc(100vw - 24px));
+  max-height: min(58dvh, 400px);
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 12px;
+  border: 1px solid #b8ccdc;
+  border-radius: 14px;
+  background: #eaf2f9f0;
+  color: #354f68;
+  box-shadow: 0 10px 28px #334f6924;
+  backdrop-filter: blur(16px);
+}
+.design-edit-panel[hidden] { display: none; }
+.design-edit-header,.design-edit-buttons,.design-edit-field,.design-link-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: space-between;
+}
+.design-edit-header { margin-bottom: 8px; font-size: 14px; }
+.design-edit-panel button,.design-edit-panel input,.design-edit-panel select {
+  border: 1px solid #c2d3e0;
+  border-radius: 7px;
+  background: #f8fbfd;
+  color: #355777;
+  min-height: 34px;
+  padding: 5px 8px;
+  font: inherit;
+  font-size: 12px;
+}
+.design-edit-panel select { max-width: 100%; }
+.design-edit-panel button:disabled { opacity: .48; }
+.design-edit-panel button[aria-pressed="true"],
+.design-edit-panel [data-design-action="link"],
+.design-edit-panel [data-design-action="history-apply"] {
+  background: #516f8b;
+  border-color: #516f8b;
+  color: #fff;
+}
+.design-edit-panel [data-design-action="close"] {
+  min-height: 23px;
+  padding: 0 5px;
+  font-size: 18px;
+  border: 0;
+  background: transparent;
+}
+.design-edit-note,.design-history-status,.design-history-name {
+  margin: 6px 0;
+  font-size: 12px;
+  line-height: 1.4;
+}
+.design-history-status { color: #875552; }
+.design-history-status:empty { display: none; }
+.design-history-chain {
+  display: flex;
+  gap: 5px;
+  max-width: 100%;
+  padding: 1px 0 5px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+.design-history-chain button { flex: 0 0 auto; max-width: 184px; }
+.design-edit-field,.design-link-row { margin: 6px 0; font-size: 12px; }
+.design-edit-field input,.design-edit-field select { width: 51%; min-width: 0; }
+#design-constraint-overlay { pointer-events: none; }
+.design-link-outline {
+  fill: none;
+  stroke: #648eb2;
+  stroke-width: 3.5px;
+  stroke-opacity: .74;
+  vector-effect: non-scaling-stroke;
+}
+.design-link-grip {
+  fill: #f4f9ff;
+  stroke: #466e91;
+  stroke-width: 2px;
+  vector-effect: non-scaling-stroke;
+  pointer-events: auto;
+  cursor: move;
+}
+.design-link-mark {
+  fill: #304f6c;
+  stroke: #f4f8fd;
+  stroke-width: 3px;
+  stroke-linejoin: round;
+  font-weight: 600;
+  paint-order: stroke;
+  vector-effect: non-scaling-stroke;
+}
+.design-constraints-open #instrument-layer,.design-constraints-open #tools-3d,
+.design-history-open #cad-context,.design-history-open #cad-overlay { visibility: hidden; }
+@media (max-width: 600px) {
+  .design-edit-panel { top: auto; bottom: 61px; right: 10px; max-height: 38dvh; }
+  .design-edit-panel input,.design-edit-panel select { font-size: 16px; }
+}
+@media (max-height: 450px) and (min-width: 601px) {
+  .design-edit-panel { top: 57px; max-height: 56dvh; }
+}

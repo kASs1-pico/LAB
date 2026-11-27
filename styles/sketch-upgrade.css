@@ -1,0 +1,25 @@
+#sketch-upgrade-dialog { width: min(620px, calc(100vw - 28px)); padding: clamp(16px, 4vw, 28px); }
+#sketch-upgrade-dialog h2 { margin-top: 0; padding-right: 30px; }
+#sketch-upgrade-dialog select,
+#sketch-upgrade-dialog input:not([type=checkbox]),
+#sketch-upgrade-dialog textarea { display: block; width: 100%; padding: 8px; border: 1px solid var(--line); border-radius: 8px; background: white; color: #273644; font: inherit; }
+#sketch-upgrade-dialog textarea { min-height: 104px; resize: vertical; }
+#sketch-upgrade-dialog label { display: grid; gap: 4px; align-content: start; font-size: 13px; }
+#sketch-upgrade-dialog label:has(textarea),
+#sketch-upgrade-dialog label:has(select),
+#sketch-upgrade-dialog p,
+#sketch-upgrade-dialog ul { grid-column: 1 / -1; }
+#sketch-upgrade-dialog label:has(input[type=checkbox]) { grid-template-columns: 1fr auto; align-items: center; }
+#sketch-upgrade-dialog [role=status]:empty { display: none; }
+.sketch-upgrade-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-block: 12px; }
+.sketch-upgrade-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.sketch-upgrade-actions button:not(.primary-button) { border: 1px solid var(--line); border-radius: 10px; padding: 9px 12px; }
+.sketch-upgrade-picking #paper-wrap { cursor: crosshair; }
+.sketch-upgrade-picking :is(#instrument-layer,#tools-3d) { visibility: hidden; }
+.sketch-upgrade-control-line,
+.sketch-upgrade-preview-line { fill: none; stroke: #457ad1; stroke-width: 2px; vector-effect: non-scaling-stroke; pointer-events: none; }
+.sketch-upgrade-control-line { stroke: #748fa9; stroke-dasharray: 4 4; }
+.sketch-upgrade-handle { fill: #fff; stroke: #457ad1; stroke-width: 2px; vector-effect: non-scaling-stroke; cursor: grab; }
+.sketch-upgrade-handle:active { cursor: grabbing; }
+.sketch-upgrade-floating { position: fixed; inset: auto 12px 80px; z-index: 34; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px; width: fit-content; max-width: calc(100vw - 24px); margin-inline: auto; padding: 10px 14px; border-radius: 13px; }
+.sketch-upgrade-floating[hidden] { display: none; }

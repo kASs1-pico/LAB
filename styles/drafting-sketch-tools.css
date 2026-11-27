@@ -1,0 +1,73 @@
+#drafting-sketch-dimensions,
+#drafting-sketch-markers { pointer-events: none; }
+.drafting-sketch-leader {
+  fill: none;
+  stroke: #4d779b;
+  stroke-width: 1px;
+  vector-effect: non-scaling-stroke;
+}
+.drafting-sketch-text {
+  fill: #2e597f;
+  stroke: #f7fbff;
+  stroke-width: 3px;
+  stroke-linejoin: round;
+  paint-order: stroke;
+  text-anchor: middle;
+  font-weight: 600;
+  vector-effect: non-scaling-stroke;
+}
+.drafting-sketch-error {
+  fill: #fffef4e8;
+  stroke: #ac5130;
+  stroke-width: 2px;
+  vector-effect: non-scaling-stroke;
+}
+.drafting-sketch-error.gap { stroke: #946511; }
+.drafting-sketch-error.duplicate { stroke: #7654a0; }
+.drafting-sketch-gap {
+  stroke: #946511;
+  stroke-width: 2px;
+  stroke-dasharray: 3 2;
+  vector-effect: non-scaling-stroke;
+}
+#drafting-sketch-panel { display: grid; gap: 6px; }
+#drafting-sketch-panel[hidden] { display: none; }
+#drafting-sketch-panel label { font-size: 12px; }
+#drafting-sketch-panel input { width: 100%; }
+#drafting-sketch-panel form { display: grid; gap: 5px; }
+#drafting-sketch-panel .design-edit-header { margin: 0; }
+#drafting-sketch-panel [data-sketch-action="apply"] {
+  background: #45627e;
+  border-color: #45627e;
+  color: #fff;
+}
+.drafting-gap-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 12px;
+}
+.drafting-gap-list li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  padding: 5px 0;
+  border-top: 1px solid #a9c0d3;
+}
+.drafting-sketch-active #instrument-layer,
+.drafting-sketch-active #tools-3d { visibility: hidden; }
+[data-canvas-theme="dark"] .drafting-sketch-text { fill: #d8eaf8; stroke: #283b4f; }
+[data-canvas-theme="dark"] .drafting-sketch-leader { stroke: #9ec3e5; }
+[data-canvas-theme="dark"] .drafting-sketch-error { fill: #364657; stroke: #ff9f7e; }
+[data-canvas-theme="dark"] .drafting-sketch-error.gap,
+[data-canvas-theme="dark"] .drafting-sketch-gap { stroke: #f2c174; }
+[data-canvas-theme="dark"] .drafting-sketch-error.duplicate { stroke: #c0a8ea; }
+@media (max-width: 600px), (max-height: 500px) and (pointer: coarse) {
+  #drafting-sketch-panel {
+    top: auto;
+    bottom: calc(72px + env(safe-area-inset-bottom));
+    max-height: min(38dvh, 240px);
+  }
+}

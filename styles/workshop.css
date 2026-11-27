@@ -1,0 +1,71 @@
+/* Floating controls for the current operation. */
+.workshop-popup {
+  position: fixed;
+  z-index: 60;
+  width: min(285px, calc(100vw - 20px));
+  right: 18px;
+  top: 83px;
+  padding: 16px;
+  max-height: calc(100dvh - 150px);
+  overflow: auto;
+  overscroll-behavior: contain;
+  background: #f7fafdf2;
+  color: #304d65;
+  border: 1px solid #d2dfeb;
+  border-radius: 16px;
+  box-shadow: 0 12px 36px #334f6926;
+  backdrop-filter: blur(20px);
+}
+.workshop-popup[hidden] { display: none; }
+.workshop-heading, .workshop-field, .workshop-buttons { display: flex; align-items: center; gap: 8px; }
+.workshop-heading, .workshop-field { justify-content: space-between; }
+.workshop-heading { margin-bottom: 12px; font-size: 14px; }
+.workshop-popup button, .workshop-field input, .workshop-field select {
+  border: 1px solid #cedde9;
+  border-radius: 8px;
+  background: #fff9;
+  color: #456682;
+  min-height: 33px;
+  font: inherit;
+  font-size: 12px;
+  padding: 6px 9px;
+}
+.workshop-popup button:hover { background: #dceaf5; }
+.workshop-heading button { border: 0; background: transparent; font-size: 18px; }
+.workshop-group { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-top: 12px; }
+.workshop-group h3 { grid-column: 1/-1; font-size: 11px; color: #6b8296; font-weight: 500; margin: 0 0 3px; }
+.workshop-group button { text-align: left; border: 0; background: #e4edf577; }
+.workshop-field { font-size: 12px; line-height: 1.4; margin: 9px 0; }
+.workshop-field input, .workshop-field select { width: 51%; min-width: 0; }
+.workshop-buttons { margin-top: 10px; flex-wrap: wrap; }
+.workshop-buttons button { flex: 1; }
+.workshop-buttons [data-workshop-action=apply] { background: #587893; color: white; }
+.workshop-hint,.workshop-status { font-size: 12px; line-height: 1.45; margin: 6px 0; }
+.workshop-status { color: #8e5749; }
+#workshop-guides { position: fixed; inset: 0; width: 100vw; height: 100dvh; z-index: 30; pointer-events: none; touch-action: none; }
+.operation-trace { fill: none; stroke: #608bb0; stroke-width: 1.6; stroke-dasharray: 5 3; }
+.operation-grip { fill: #f3f9fe; stroke: #527da3; stroke-width: 1.8; touch-action: none; pointer-events: auto; cursor: move; }
+.operation-value { fill: #3d6383; stroke: #f6faff; stroke-width: 4px; paint-order: stroke; font: 12px system-ui,sans-serif; }
+.workshop-editing #cad-overlay,.workshop-editing #cad-context { visibility: hidden; }
+#cad-radial .radial-caption #cad-workshop { width: auto; height: auto; min-height: 26px; font-size: 9px; padding: 4px 6px; border-radius: 7px; }
+@media (max-width: 600px) {
+  .workshop-popup { top: auto; bottom: 61px; right: 10px; max-height: min(46dvh, 360px); padding: 12px; }
+  #workshop-menu { max-height: calc(100dvh - 132px); }
+  .workshop-field input,.workshop-field select { font-size: 16px; }
+  #cad-presentation { padding: 4px; gap: 1px; }
+  #cad-presentation button { padding: 8px 4px; }
+}
+@media (max-height: 490px) and (min-width: 601px) { .workshop-popup {top: 62px; max-height: calc(100dvh - 117px);} }
+#workshop-inscription {
+  position: fixed;
+  z-index: 35;
+  width: min(126px, 32vw);
+  padding: 5px 8px;
+  border: 1px solid #a9c1d4;
+  border-radius: 6px;
+  color: #304d65;
+  background: #fafcfff2;
+  font: 16px system-ui, sans-serif;
+}
+#workshop-inscription[hidden] { display: none; }
+.operation-arrow { fill: none; stroke: #527da3; stroke-width: 2; }

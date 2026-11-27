@@ -1,0 +1,184 @@
+#cad-overlay .dimension-leader {
+  stroke: #7c99b4;
+  stroke-width: 1;
+  fill: none;
+  pointer-events: none;
+}
+#cad-overlay .dimension-label rect { rx: 8; }
+#cad-overlay .dimension-label:focus-visible rect { stroke: #3675a7; stroke-width: 2; }
+#cad-overlay .dimension-label:is(:hover,:focus-visible) .dimension-leader { stroke: #3675a7; stroke-width: 1.5; }
+
+#canvas-tour { width: min(320px, calc(100vw - 20px)); }
+.canvas-tour-stops {
+  display: grid;
+  gap: 4px;
+  margin: 0 0 10px;
+  padding-left: 22px;
+  color: #4b6b86;
+  font-size: 12px;
+}
+.canvas-tour-stops li { padding-left: 2px; }
+.canvas-tour-stop-name {
+  display: inline-block;
+  width: calc(100% - 101px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+.canvas-tour-stops button { width: 31px; padding: 3px; margin-left: 2px; }
+.canvas-tour-row { display:flex; align-items:center; gap:6px; margin:8px 0; }
+.canvas-tour-row :is(select,input) {
+  height: 33px;
+  flex: 1;
+  min-width: 0;
+  padding: 0 7px;
+  border-radius: 8px;
+  border: 1px solid #cad9e7;
+  background: #fff;
+  color: #344f69;
+  font: inherit;
+  font-size: 12px;
+}
+#canvas-tour-start { width: 100%; margin-top: 4px; background: #566f89; color: #fff; }
+#canvas-tour-player {
+  position: fixed;
+  left: 50%;
+  bottom: max(12px, env(safe-area-inset-bottom));
+  z-index: 90;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  width: max-content;
+  max-width: calc(100vw - 20px);
+  padding: 5px;
+  border-radius: 13px;
+  color: #3c5b76;
+  background: #f6faffeb;
+}
+#canvas-tour-player[hidden] { display: none; }
+#canvas-tour-player button {
+  min-width: 37px;
+  min-height: 36px;
+  padding: 4px;
+  border-radius: 8px;
+  color: inherit;
+  background: transparent;
+  font-size: 16px;
+}
+#canvas-tour-player button:hover { background: #deebf6; }
+#canvas-tour-caption {
+  min-width: 0;
+  margin: 0 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 12px;
+}
+.canvas-tour-playing :is(.topbar,#cad-controls,.canvas-topline,.model-quickbar,.model-content,#cad-context,#cad-overlay,#cad-presentation,.studio-fab,#layers-panel) {
+  display: none !important;
+}
+.canvas-tour-playing #model-preview { background: radial-gradient(ellipse at 50% 42%, #f9fbfd, #e6edf4); }
+@media (max-width: 600px) {
+  .canvas-tour-row :is(select,input) { font-size: 16px; }
+}
+
+html[data-canvas-theme="dark"] {
+  color-scheme: dark;
+  --ink: #e2edf7;
+  --muted: #a2b6ca;
+  --accent: #627f9c;
+  --accent-light: #293b4e;
+  --line: #3e5368;
+  --surface: #1e2a37;
+  --night-surface: #253343;
+  --night-glass: #213040ed;
+  --night-quiet: #9bb1c7;
+  --night-control: #304357;
+  --night-hover: #3f5870;
+}
+[data-canvas-theme="dark"] body {
+  background: radial-gradient(ellipse at 50% 15%, #273646, #18212e 72%);
+  color: var(--ink);
+}
+[data-canvas-theme="dark"] :is(.glass,dialog,#cad-radial,#cad-parameter,#cad-task,#cad-presentation) {
+  background: var(--night-glass);
+  color: var(--ink);
+  border-color: var(--line);
+  box-shadow: 0 12px 34px #0d142141;
+}
+[data-canvas-theme="dark"] :is(.studio-layout #model-panel,.studio-layout #model-options,.studio-layout .model-quickbar) {
+  background: var(--night-glass);
+  color: var(--ink);
+  border-color: var(--line);
+}
+[data-canvas-theme="dark"] .studio-layout.cad-integrated #model-panel { background: #192330; }
+[data-canvas-theme="dark"] .studio-layout #model-preview {
+  background: radial-gradient(ellipse at 50% 39%, #2b3a4c, #192330 79%);
+  border-color: var(--line);
+}
+[data-canvas-theme="dark"] .model-preview::before { opacity: .35; }
+[data-canvas-theme="dark"] :is(#paper-background,.paper-wrap) { fill: #293646; background-color: #293646; }
+[data-canvas-theme="dark"] #grid-fine-lines { stroke: #364559; }
+[data-canvas-theme="dark"] #grid-minor-lines { stroke: #394b60; }
+[data-canvas-theme="dark"] #grid > path { stroke: #465a6e; }
+[data-canvas-theme="dark"] .paper-corner { display: none; }
+[data-canvas-theme="dark"] :is(#drawing-layer,#draft-layer,#contour-layer) [stroke="#263c46" i] { stroke: #d7e5f3; }
+[data-canvas-theme="dark"] :is(#drawing-layer,#draft-layer,#contour-layer) [stroke="#457ad1" i] { stroke: #86b2ef; }
+[data-canvas-theme="dark"] :is(.welcome-subtitle,.welcome-author,.welcome-dialog>.eyebrow,.brand small,.subtle,.canvas-label,.popover-note,.layer-note,.orientation-choice small,.model-view-label,#cad-radial .radial-caption) {
+  color: var(--night-quiet);
+}
+[data-canvas-theme="dark"] :is(.orientation-choice,.studio-fab,.export-button,.icon-button,.tool-button,.layer-row,.studio-layout .model-quickbar select,.studio-layout .model-quickbar button,#model-height-hud) { color: var(--ink); }
+[data-canvas-theme="dark"] :is(.orientation-choice,.studio-fab,.export-button,.layer-row,.studio-layout .model-quickbar select,.studio-layout .model-quickbar button,#model-height-hud) {
+  background: var(--night-control);
+  border-color: var(--line);
+}
+[data-canvas-theme="dark"] :is(dialog .orientation-choice.selected,.layer-row.active,.icon-button:hover,.tool-button.active) { background: var(--night-hover); }
+[data-canvas-theme="dark"] :is(.studio-popover,.workshop-popup,#cad-context,#cad-parameter,#cad-radial,#cad-presentation,.model-content,#canvas-tour-player,.inspector) :is(button,input:not([type=range]):not([type=checkbox]),select) {
+  color: var(--ink);
+  border-color: var(--line);
+  background-color: var(--night-control);
+}
+[data-canvas-theme="dark"] :is(.studio-popover,.workshop-popup,#cad-context,#cad-parameter,#cad-radial,#cad-presentation,.model-content,#canvas-tour-player,.inspector) button:hover {
+  background-color: var(--night-hover);
+}
+[data-canvas-theme="dark"] :is(button:disabled,select:disabled,input:disabled) { opacity: .58; }
+[data-canvas-theme="dark"] :is(.workshop-group h3,.workshop-field,.cad-field>label,.cad-note,#cad-task-text,.advanced-options label,.advanced-options summary,.advanced-options p,.model-guide,.model-feedback,.model-feedback li,.input-button-row label,.canvas-tour-stops,.layer-row input,.layer-row .layer-select) { color: var(--night-quiet); }
+[data-canvas-theme="dark"] :is(#cad-parameter h3,.model-feedback strong,.advanced-options select,.advanced-options input, .model-empty strong, .model-empty p, .model-status) { color: var(--ink); }
+[data-canvas-theme="dark"] :is(.workshop-status,.cad-error) { color: #eab8a0; }
+[data-canvas-theme="dark"] #cad-overlay .dimension-label rect { fill: #26374a; stroke: #688399; }
+[data-canvas-theme="dark"] #cad-overlay .dimension-label text { fill: #e3f0fc; }
+[data-canvas-theme="dark"] #cad-overlay .dimension-label:hover rect { fill: #415b73; }
+[data-canvas-theme="dark"] #cad-overlay :is(.dimension-line,.dimension-leader) { stroke: #88a6c3; }
+[data-canvas-theme="dark"] :is(.operation-grip,.cad-grip,.cad-edit-handle) { fill: #263749; stroke: #a2c9eb; }
+[data-canvas-theme="dark"] .operation-value { fill: #e3f0fc; stroke: #213041; }
+[data-canvas-theme="dark"] #workshop-inscription { background: #233344; color: var(--ink); border-color: var(--line); }
+[data-canvas-theme="dark"] .canvas-topline .toast { background: #243447; color: var(--ink); }
+[data-canvas-theme="dark"] body.studio-layout :is(.topbar,.model-quickbar,#cad-controls,#cad-context) button {
+  color: var(--ink);
+}
+[data-canvas-theme="dark"] body.studio-layout :is(.topbar .export-button,.model-quickbar button) {
+  background: var(--night-control);
+  border-color: var(--line);
+}
+[data-canvas-theme="dark"] body.studio-layout :is(.topbar,.model-quickbar,#cad-controls,#cad-context) button:is(:hover,[aria-pressed=true]) {
+  background-color: var(--night-hover);
+}
+[data-canvas-theme="dark"] :is(#inspection-toolbar,#sketch-extra-card,.design-edit-panel,#inspection-wipe span,.inspection-pin span) {
+  background: var(--night-glass);
+  color: var(--ink);
+  border-color: var(--line);
+}
+[data-canvas-theme="dark"] :is(#inspection-toolbar,#sketch-extra-card,.design-edit-panel,.draft-toolbar,#draft-chooser) :is(button,input:not([type=range]),select) {
+  background: var(--night-control);
+  color: var(--ink);
+  border-color: var(--line);
+}
+[data-canvas-theme="dark"] :is(#sketch-extra-card p,.design-edit-note) { color: var(--night-quiet); }
+[data-canvas-theme="dark"] :is(.design-history-status,#constraint-status) { color: #eab8a0; }
+[data-canvas-theme="dark"] .design-link-mark { fill: #d6eaff; stroke: #273849; }
+[data-canvas-theme="dark"] #inspection-surface { background: radial-gradient(ellipse at 50% 40%, #2d3d4f, #192330 78%); }
+@media screen {
+  [data-canvas-theme="dark"] #draft-sheet-stage { background: #192330; color: var(--ink); }
+}

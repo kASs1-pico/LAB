@@ -1,0 +1,84 @@
+.solid-upgrade-panel {
+  top: 128px;
+  right: 16px;
+  bottom: auto;
+  left: auto;
+  width: min(370px, calc(100vw - 32px));
+  max-height: calc(100dvh - 172px);
+  overflow: auto;
+}
+.solid-upgrade-panel > form,
+.solid-upgrade-panel details > form {
+  display: grid;
+  gap: 9px;
+  margin-top: 10px;
+}
+.solid-upgrade-panel form label[hidden] {
+  display: none;
+}
+.solid-upgrade-panel form .workshop-field input[type="range"] {
+  min-width: 82px;
+}
+.solid-upgrade-panel .workshop-status {
+  margin: 0;
+  white-space: pre-line;
+}
+.solid-upgrade-panel > details {
+  margin: 10px 0;
+}
+.solid-upgrade-panel summary {
+  cursor: pointer;
+}
+.solid-body-list {
+  display: grid;
+  gap: 8px;
+  padding: 4px 0;
+}
+.solid-body-list section {
+  display: grid;
+  gap: 4px;
+}
+.solid-body-list h3 {
+  margin: 0;
+  font-size: .84rem;
+  color: var(--muted);
+}
+.solid-body-list button {
+  text-align: left;
+}
+.solid-body-list small {
+  color: var(--muted);
+}
+.solid-body-list button[aria-pressed="true"] {
+  border-color: #748dad;
+}
+.solid-picked {
+  margin: 8px 0 0;
+  font-weight: 600;
+}
+.solid-assembly-order {
+  display: grid;
+  gap: 5px;
+  margin: 0;
+  padding-left: 20px;
+}
+.solid-assembly-order li button {
+  padding-inline: 8px;
+  margin-left: 4px;
+}
+.design-feature-state {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 8px 0;
+}
+@media (max-width: 600px) {
+  .solid-upgrade-panel {
+    top: auto;
+    right: 8px;
+    bottom: 68px;
+    left: auto;
+    width: min(370px, calc(100vw - 16px));
+    max-height: min(52dvh, 500px);
+  }
+}

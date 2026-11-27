@@ -1,0 +1,15 @@
+#sketch-extra-card{position:fixed;top:84px;right:18px;z-index:48;width:min(262px,calc(100vw - 20px));padding:15px;border-radius:15px;background:#f4f9fdf2;color:#405f7b;box-shadow:0 6px 30px #324f6c26}
+#sketch-extra-card[hidden],#sketch-loupe[hidden]{display:none}
+#sketch-extra-card header{display:flex;align-items:center;justify-content:space-between;font-size:14px;margin-bottom:9px}
+#sketch-extra-card button{background:#dfeaf3;color:#3e607e;border-radius:8px;padding:8px;font-size:12px;min-height:32px}
+#sketch-extra-card header button{background:none;font-size:20px;width:30px;padding:0}
+#sketch-extra-card>button,#sketch-extra-card form>button{width:100%;margin-top:5px}
+#sketch-extra-card p{font-size:12px;line-height:1.5;margin:6px 0;color:#5f788e}
+#sketch-extra-card label{display:block;font-size:12px;margin:10px 0}
+#sketch-extra-card input[type=number]{display:block;width:100%;background:#fff;border:1px solid #cbdbe7;border-radius:7px;padding:8px;margin-top:7px;color:#405f7b;font-size:16px}
+#sketch-extra-card input[type=range]{display:block;width:100%;margin:9px 0 0;accent-color:#6485a1}
+#sketch-extra-card .sketch-check{display:flex;align-items:center;gap:8px}
+#sketch-loupe{position:fixed;z-index:91;pointer-events:none;width:104px;height:104px;border:2px solid #7b96ae;border-radius:50%;overflow:hidden;background:white;box-shadow:0 3px 15px #293f5540}
+#sketch-loupe::before,#sketch-loupe::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#496c8a;pointer-events:none}
+#sketch-loupe::before{width:16px;height:1px}#sketch-loupe::after{width:1px;height:16px}
+@media(max-width:600px){#sketch-extra-card{top:auto;right:10px;bottom:61px;max-height:40dvh;overflow:auto}}
