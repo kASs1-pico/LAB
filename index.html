@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#EDF1F5">
+  <meta name="description" content="Чертите на свободном холсте и превращайте замкнутые контуры в 3D-модели с отверстиями. Слои, фаски, сечения и экспорт STL/GLB. Школьный проект Тимофея М.">
+  <title>Виртуальная лаборатория черчения</title>
+  <link rel="icon" href="./assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="./lab.webmanifest">
+  <meta name="theme-color" content="#e5eef7">
+  <link rel="stylesheet" href="./styles/styles.css">
+  <link rel="stylesheet" href="./styles/studio.css">
+  <link rel="stylesheet" href="./styles/cad.css">
+  <link rel="stylesheet" href="./styles/workshop.css">
+  <link rel="stylesheet" href="./styles/inspect.css">
+  <link rel="stylesheet" href="./styles/sketch-extras.css">
+  <link rel="stylesheet" href="./styles/drawing-sheet.css">
+  <link rel="stylesheet" href="./styles/design-edit.css">
+  <link rel="stylesheet" href="./styles/assembly-tools.css">
+  <link rel="stylesheet" href="./styles/visual-canvas.css">
+  <link rel="stylesheet" href="./styles/drafting-sketch-tools.css">
+  <link rel="stylesheet" href="./styles/lab-caliper.css">
+  <link rel="stylesheet" href="./styles/measurement-journal.css">
+  <link rel="stylesheet" href="./styles/experiment-chart.css">
+  <link rel="stylesheet" href="./styles/experiment-ui.css">
+  <link rel="stylesheet" href="./styles/sketch-upgrade.css">
+  <link rel="stylesheet" href="./styles/solid-upgrade.css">
+  <link rel="stylesheet" href="./styles/teaching-lab.css">
+  <link rel="stylesheet" href="./styles/project-workspace.css">
+  <link rel="stylesheet" href="./styles/workbench.css">
+  <script src="./src/sketch/instruments.js" defer></script>
+  <script src="./src/sketch/tools3d.js" defer></script>
+  <script src="./vendor/earcut.js" defer></script>
+  <script src="./src/model/extrusion-geometry.js" defer></script>
+  <script src="./src/model/solid-geometry.js" defer></script>
+  <script src="./src/model/solid-lab-geometry.js" defer></script>
+  <script src="./src/inspection/inspect-geometry.js" defer></script>
+  <script src="./src/drawing/drawing-tools-extra.js" defer></script>
+  <script src="./src/drawing/drawing-geometry.js" defer></script>
+  <script src="./src/inspection/print-upgrade.js" defer></script>
+  <script src="./vendor/engraving-glyphs.js" defer></script>
+  <script src="./src/model/form-geometry.js" defer></script>
+  <script src="./src/model/assembly-geometry.js" defer></script>
+  <script src="./src/model/model-rendering.js" defer></script>
+  <script src="./src/model/model-viewer.js" defer></script>
+  <script src="./src/model/model-export.js" defer></script>
+  <script src="./src/sketch/design-constraints.js" defer></script>
+  <script src="./src/inspection/measurement-geometry.js" defer></script>
+  <script src="./src/experiments/experiment-geometry.js" defer></script>
+  <script src="./src/sketch/sketch-upgrade.js" defer></script>
+  <script src="./src/sketch/sketch-tools-extra.js" defer></script>
+  <script src="./src/teaching/teaching-geometry.js" defer></script>
+  <script src="./src/projects/project-formats.js" defer></script>
+  <script src="./src/core/project-model.js" defer></script>
+  <script src="./src/sketch/sketch-spatial-index.js" defer></script>
+  <script src="./src/core/app.js" defer></script>
+  <script src="./src/studio/studio-ui.js" defer></script>
+  <script src="./src/model/cad-ui.js" defer></script>
+  <script src="./src/inspection/inspect-ui.js" defer></script>
+  <script src="./src/sketch/sketch-extras.js" defer></script>
+  <script src="./src/drawing/drawing-sheet-scene.js" defer></script>
+  <script src="./src/drawing/drawing-sheet-export.js" defer></script>
+  <script src="./src/drawing/drawing-sheet.js" defer></script>
+  <script src="./src/sketch/design-edit.js" defer></script>
+  <script src="./src/model/assembly-tools.js" defer></script>
+  <script src="./src/studio/visual-canvas.js" defer></script>
+  <script src="./src/sketch/drafting-sketch-tools.js" defer></script>
+  <script src="./src/inspection/lab-caliper.js" defer></script>
+  <script src="./src/inspection/measurement-journal.js" defer></script>
+  <script src="./src/experiments/experiment-chart.js" defer></script>
+  <script src="./src/experiments/experiment-ui.js" defer></script>
+  <script src="./src/studio/workshop.js" defer></script>
+  <script src="./src/model/solid-upgrade.js" defer></script>
+  <script src="./src/teaching/teaching-lab.js" defer></script>
+  <script src="./src/projects/project-preview.js" defer></script>
+  <script src="./src/projects/project-gallery-store.js" defer></script>
+  <script src="./src/projects/project-workspace.js" defer></script>
+  <script src="./src/extensions/workbench.js" defer></script>
+  <script src="./src/drawing/drawing-tools-ui.js" defer></script>
+  <script src="./src/extensions/spatial-lab.js" defer></script>
+  <script src="./src/model/solid-lab-ui.js" defer></script>
+  <script src="./src/extensions/mechanism-geometry.js" defer></script>
+  <script src="./src/extensions/mechanisms.js" defer></script>
+  <script src="./src/extensions/metrology.js" defer></script>
+  <script src="./src/extensions/print-workbench.js" defer></script>
+  <script src="./src/extensions/cad-code-geometry.js" defer></script>
+  <script src="./src/extensions/cad-code.js" defer></script>
+  <script src="./src/extensions/teacher-tools.js" defer></script>
+  <script src="./src/projects/workbench-data.js" defer></script>
+  <script src="./src/projects/workbench-projects.js" defer></script>
+</head>
+<body class="studio-layout">
+  <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-ruler" viewBox="0 0 24 24"><path d="m4 15 11-11 5 5L9 20l-5-5Z"/><path d="m13 6 2 2m-5 1 2 2m-5 1 2 2m-5 1 2 2"/></symbol>
+    <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="6" r="2.5"/><path d="M12 1v2m-1 6L5 22m8-13 6 13M7 16c3 2 7 2 10 0"/></symbol>
+    <symbol id="i-pencil" viewBox="0 0 24 24"><path d="m4 15 11-11a2 2 0 0 1 3 0l2 2a2 2 0 0 1 0 3L9 20l-6 1 1-6Zm9-9 5 5M4 15l5 5"/></symbol>
+    <symbol id="i-line" viewBox="0 0 24 24"><path d="M5 19 19 5"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="5" r="2"/></symbol>
+    <symbol id="i-eraser" viewBox="0 0 24 24"><path d="m4 13 9-9a2 2 0 0 1 3 0l5 5a2 2 0 0 1 0 3l-8 8H8l-4-4a2 2 0 0 1 0-3Zm5-5 9 9M12 20h9"/></symbol>
+    <symbol id="i-undo" viewBox="0 0 24 24"><path d="m8 5-5 5 5 5M3 10h11a6 6 0 0 1 0 12" transform="translate(0 -2)"/></symbol>
+    <symbol id="i-redo" viewBox="0 0 24 24"><path d="m16 5 5 5-5 5m5-5H10a6 6 0 0 0 0 12" transform="translate(0 -2)"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18M9 6V3h6v3M5 6l1 15h12l1-15M10 10v7m4-7v7"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 12h16M12 4v16"/></symbol>
+    <symbol id="i-fit" viewBox="0 0 24 24"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></symbol>
+    <symbol id="i-sheet" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6V3Zm8 0v5h4M9 12h6m-6 4h6"/></symbol>
+    <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 9a3 3 0 0 1 6 0c0 2-3 2-3 5m0 3h.01"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-move" viewBox="0 0 24 24"><path d="M12 3v18M3 12h18M9 6l3-3 3 3M9 18l3 3 3-3M6 9l-3 3 3 3m12-6 3 3-3 3"/></symbol>
+    <symbol id="i-contour" viewBox="0 0 24 24"><path d="m5 5 14 2-3 13-12-4L5 5Z"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="7" r="2"/><circle cx="16" cy="20" r="2"/><circle cx="4" cy="16" r="2"/></symbol>
+    <symbol id="i-cube" viewBox="0 0 24 24"><path d="m12 2 9 5v10l-9 5-9-5V7l9-5Zm0 10 9-5M12 12 3 7m9 5v10M8 4l9 5"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/><circle cx="8" cy="6" r="2"/><circle cx="16" cy="12" r="2"/><circle cx="10" cy="18" r="2"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 10 5-10 5L2 8l10-5Zm-9 10 9 5 9-5M3 18l9 4 9-4"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+  </svg>
+  <div class="app-shell">
+    <header class="topbar glass">
+      <a class="brand" href="./" aria-label="Виртуальная лаборатория черчения"><span class="brand-mark"><svg><use href="#i-compass"/></svg></span><span><strong>Лаборатория <span class="brand-light">черчения</span></strong><small>Пространство точных идей</small></span></a>
+      <span class="project-tag">ШКОЛЬНЫЙ ПРОЕКТ</span>
+      <div id="workspace-views" role="group" aria-label="Режим просмотра">
+        <button id="view-sheet" type="button" data-view="sheet" aria-pressed="true">Лист</button>
+        <button id="open-model" type="button" data-view="model" aria-pressed="false" aria-controls="model-panel">3D</button>
+        <button id="view-draft" type="button" data-view="draft" aria-pressed="false">Чертёж А4</button>
+      </div>
+      <div class="header-actions">
+        <div class="history-actions"><button class="icon-button" id="undo" title="Отменить (Ctrl / ⌘ Z)" aria-label="Отменить"><svg><use href="#i-undo"/></svg></button><button class="icon-button" id="redo" title="Повторить (Ctrl / ⌘ Shift Z)" aria-label="Повторить"><svg><use href="#i-redo"/></svg></button></div>
+        <button class="icon-button" id="new-sheet" title="Новый лист" aria-label="Новый лист"><svg><use href="#i-sheet"/></svg></button>
+        <button class="icon-button" id="help" title="Как пользоваться" aria-label="Как пользоваться"><svg><use href="#i-help"/></svg></button>
+        <button class="icon-button" id="focus-toggle" title="Только лист" aria-label="Только лист" aria-pressed="false"><svg><use href="#i-fit"/></svg></button><button class="icon-button" id="studio-menu-toggle" aria-label="Меню лаборатории" aria-expanded="false"><svg><use href="#i-menu"/></svg></button>
+        <button class="primary-button export-button" id="export" aria-label="Сохранить"><svg><use href="#i-download"/></svg><span>Сохранить</span></button>
+      </div>
+    </header>
+    <main class="workspace">
+      <div id="tool-dock" class="glass" role="group" aria-label="Панель инструментов">
+        <button id="tool-launch" class="studio-fab" aria-expanded="false" aria-controls="tool-palette"><svg aria-hidden="true"><use href="#i-ruler"/></svg><span>Инструменты</span><b aria-hidden="true">⌄</b></button>
+        <nav id="tool-palette" class="tool-rail glass" aria-label="Инструменты черчения">
+          <button class="tool-button" data-tool="pencil" title="Карандаш (P)"><svg><use href="#i-pencil"/></svg><span>Карандаш</span><kbd>P</kbd></button>
+          <button class="tool-button" data-tool="line" title="Отрезок (L)"><svg><use href="#i-line"/></svg><span>Отрезок</span><kbd>L</kbd></button>
+          <button class="tool-button" data-tool="contour" title="Замкнутый контур (K)"><svg><use href="#i-contour"/></svg><span>Контур</span><kbd>K</kbd></button>
+          <button class="tool-button active" data-tool="ruler" title="Линейка (R)" aria-pressed="true"><svg><use href="#i-ruler"/></svg><span>Линейка</span><kbd>R</kbd></button>
+          <button class="tool-button" data-tool="compass" title="Циркуль (C)"><svg><use href="#i-compass"/></svg><span>Циркуль</span><kbd>C</kbd></button>
+          <button class="tool-button" data-tool="eraser" title="Ластик (E)"><svg><use href="#i-eraser"/></svg><span>Ластик</span><kbd>E</kbd></button>
+        <span class="rail-divider"></span>
+        <button class="tool-button" type="button" data-workshop-shortcut="caliper"><svg aria-hidden="true"><use href="#i-ruler"/></svg><span>Измерить</span></button>
+        <button class="tool-button" type="button" data-workshop-shortcut="contour-check"><svg aria-hidden="true"><use href="#i-check"/></svg><span>Проверить контур</span></button>
+        <button class="tool-button" type="button" data-workshop-shortcut="driving-dimension"><svg aria-hidden="true"><use href="#i-contour"/></svg><span>Поставить размер</span></button>
+        <div class="rail-bottom"><button class="tool-button clear-button" id="clear" title="Очистить рисунок"><svg><use href="#i-trash"/></svg><span>Очистить</span></button></div>
+        </nav>
+        <button id="context-toggle" class="studio-fab" aria-controls="tool-inspector" aria-expanded="false"><svg aria-hidden="true"><use href="#i-settings"/></svg><span id="active-tool-name">Линейка</span></button>
+        <button id="cad-select" class="studio-fab" aria-pressed="false" title="Выбор и изменение контура (V)"><svg aria-hidden="true"><use href="#i-contour"/></svg><span>Выбрать</span></button>
+      </div>
+      <section class="drawing-area" aria-label="Рабочее пространство">
+        <div class="canvas-topline"><div><span class="live-dot"></span><span id="sheet-name">Чистый лист</span><span class="subtle" id="sheet-meta">А4 · горизонтальный</span></div><span class="canvas-label">ВАША МАСТЕРСКАЯ</span><div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div></div>
+        <div class="stage" id="stage">
+          <div class="paper-wrap" id="paper-wrap" tabindex="0" aria-label="Холст. Escape отменяет движение.">
+            <svg id="paper" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1188 840" aria-label="Лист для черчения. Выберите инструмент и рисуйте мышью или пальцем." role="img">
+              <defs id="paper-defs"></defs>
+              <rect id="paper-background" width="100%" height="100%" fill="#fff"/>
+              <rect id="grid-layer" width="100%" height="100%" fill="url(#grid)" pointer-events="none"/>
+              <g id="profile-layer" pointer-events="none"></g><g id="drawing-layer" pointer-events="none"></g><g id="draft-layer" pointer-events="none"></g><g id="contour-layer" pointer-events="none"></g><g id="diagnostic-layer" pointer-events="none"></g><g id="history-fx" pointer-events="none"></g><g id="snap-layer" pointer-events="none"></g><g id="linked-highlight" pointer-events="none"></g><g id="smart-guides" pointer-events="none"></g><g id="cad-edit-layer"></g>
+            </svg>
+            <canvas id="tools-3d" aria-hidden="true"></canvas>
+            <svg id="instrument-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1188 840" aria-hidden="true"><g id="instrument-layer"></g></svg>
+            <div class="paper-corner" aria-hidden="true"></div>
+          </div>
+        </div>
+        <div class="canvas-bottomline"><span class="tool-hint" id="tool-hint"><svg><use href="#i-move"/></svg><span>Перемещайте линейку за середину</span></span><div class="zoom-controls"><button class="mini-button" id="zoom-out" aria-label="Уменьшить масштаб">−</button><output id="zoom-label">100%</output><button class="mini-button" id="zoom-in" aria-label="Увеличить масштаб">+</button><span class="zoom-divider"></span><button class="mini-button" id="pan" title="Перемещение листа" aria-label="Перемещение листа" aria-pressed="false"><svg><use href="#i-move"/></svg></button><button class="mini-button" id="zoom-fit" title="Лист целиком" aria-label="Лист целиком"><svg><use href="#i-fit"/></svg></button></div></div>
+      </section>
+      <aside id="tool-inspector" class="inspector glass" aria-label="Настройки инструмента"><button id="context-close" class="icon-button popover-close" aria-label="Закрыть настройки"><svg><use href="#i-close"/></svg></button>
+        <div class="inspector-top"><span class="eyebrow">В ВАШИХ РУКАХ</span><span class="instrument-number" id="instrument-number">01</span></div>
+        <h1 id="tool-title">Линейка</h1><p class="tool-description" id="tool-description">Прямая линия начинается с точности.</p>
+        <div class="tool-options" id="tool-options"></div>
+        <div class="stroke-settings" id="stroke-settings"><div class="section-label">Цвет линии <span id="color-name">Графит</span></div><div class="swatches" role="group" aria-label="Цвет линии"><button class="swatch selected" data-color="#263c46" data-name="Графит" style="--swatch:#263c46" aria-label="Графит" aria-pressed="true"></button><button class="swatch" data-color="#168d83" data-name="Зелёный" style="--swatch:#168d83" aria-label="Зелёный"></button><button class="swatch" data-color="#457ad1" data-name="Синий" style="--swatch:#457ad1" aria-label="Синий"></button><button class="swatch" data-color="#d36e54" data-name="Терракота" style="--swatch:#d36e54" aria-label="Терракота"></button><button class="swatch" data-color="#9866b3" data-name="Фиолетовый" style="--swatch:#9866b3" aria-label="Фиолетовый"></button></div><label class="section-label" for="stroke-width">Толщина <output id="width-label">0,5 мм</output></label><input id="stroke-width" type="range" min="1" max="8" step="1" value="2"><div class="line-preview"><span id="line-preview"></span></div></div>
+        <div class="instruction-card"><div class="instruction-title"><span class="small-spark">✧</span> Маленькая подсказка</div><p id="instruction-text">Перетаскивайте линейку за корпус. Круглая ручка справа поворачивает её. Проведите по подсвеченному краю, чтобы начертить линию.</p></div>
+        <div class="inspector-bottom"><span class="fine-line"></span><p>От идеи —<br><em>к точной линии.</em></p><svg class="decor-compass" aria-hidden="true"><use href="#i-compass"/></svg></div>
+      </aside>
+      <aside id="model-panel" class="model-panel glass" aria-label="Модель из чертежа" hidden>
+        <div class="model-heading" id="model-drag"><div><span class="eyebrow">ИЗ ВАШЕГО ЧЕРТЕЖА</span><h2>3D-модель</h2></div><div class="model-window-actions"><button id="model-minimize" class="icon-button" aria-label="Свернуть 3D-модель" title="Свернуть">−</button><button id="model-maximize" class="icon-button" aria-label="Развернуть 3D-модель" title="Развернуть"><svg><use href="#i-fit"/></svg></button><button id="model-close" class="icon-button" title="Вернуться к настройкам инструмента" aria-label="Закрыть окно модели"><svg><use href="#i-close"/></svg></button></div></div>
+        <div class="model-preview" id="model-preview"><canvas id="model-canvas" tabindex="0" role="img" aria-label="Трёхмерная модель. Перетаскивайте для вращения, используйте колёсико для масштаба. Стрелки клавиатуры вращают модель."></canvas><div class="model-empty" id="model-empty"><svg><use href="#i-cube"/></svg><strong id="model-empty-title">Начните с контура</strong><p id="model-empty-text">Замкнутая фигура станет объёмной, а контур внутри неё — отверстием.</p></div><span class="model-view-label" id="model-phase-label">ОБЪЁМ · 3D</span><output id="model-height-hud" hidden>20 мм</output><button type="button" id="model-cancel-build" hidden>Остановить расчёт</button></div>
+        <div class="model-quickbar"><label class="sr-only" for="model-view">Вид модели</label><select id="model-view"><option value="iso">Изометрия</option><option value="top">Сверху</option><option value="front">Спереди</option><option value="side">Сбоку</option></select><button id="model-construction" title="Показать построение по этапам" aria-label="Показать построение">▷</button><button id="model-height-mode" title="Тянуть верхнюю грань" aria-label="Вытягивать за верхнюю грань" aria-pressed="false">↥</button><button id="model-settings-toggle" title="Настройки модели" aria-label="Настройки модели" aria-expanded="false"><svg><use href="#i-settings"/></svg></button></div>
+        <div class="model-content" id="model-options"><div class="model-options-heading"><strong>Настройки объёма</strong><button id="model-options-close" class="icon-button" aria-label="Закрыть настройки модели"><svg><use href="#i-close"/></svg></button></div><div class="model-view-controls" role="group" aria-label="Управление моделью"><button id="model-rotate-left" title="Повернуть влево" aria-label="Повернуть модель влево">↶</button><button id="model-rotate-right" title="Повернуть вправо" aria-label="Повернуть модель вправо">↷</button><span></span><button id="model-zoom-out" aria-label="Уменьшить модель">−</button><button id="model-zoom-in" aria-label="Увеличить модель">+</button><button id="model-reset" title="Исходный вид" aria-label="Исходный вид модели"><svg><use href="#i-fit"/></svg></button></div>
+        <p class="model-rotate-hint">Вращайте мышью или пальцем</p>
+        <div class="model-height-control"><label class="section-label" for="model-height">Высота вытягивания <span>1–200 мм</span></label><div class="model-height-input"><input id="model-height-range" type="range" min="1" max="200" step="1" value="20" aria-label="Высота вытягивания, ползунок"><div class="value-field"><input id="model-height" type="number" min="1" max="200" step="1" value="20"><span>мм</span></div></div></div>
+        <div class="advanced-options">
+          <label for="model-material">Материал</label><select id="model-material"><option value="plastic">Матовый пластик</option><option value="aluminum">Алюминий</option><option value="glass">Стекло</option></select>
+          <label class="check-row"><input id="model-xray" type="checkbox"> Рентген: видеть внутренние стенки</label>
+          <label for="model-bevel">Фаска на рёбрах <output id="bevel-label">0 мм</output></label><input id="model-bevel" type="range" min="0" max="2" step="0.1" value="0">
+          <label class="check-row"><input id="model-height-drag" type="checkbox"> Вытягивать за верхнюю грань</label>
+          <details><summary>Разрез модели</summary><label class="check-row"><input id="model-section" type="checkbox"> Показать разрез</label><label for="section-axis">Направление</label><select id="section-axis"><option value="x">Слева направо · X</option><option value="y">Спереди назад · Y</option><option value="z">Снизу вверх · Z</option></select><label for="section-position">Положение плоскости <output id="section-label">50%</output></label><input id="section-position" type="range" min="1" max="99" value="50"></details>
+          <details><summary>Сохранённые виды</summary><label for="view-name">Название вида</label><div class="input-button-row"><input id="view-name" maxlength="32" placeholder="Мой ракурс"><button id="save-view">Сохранить</button></div><div class="input-button-row"><select id="saved-views" aria-label="Сохранённый ракурс"><option value="">Нет сохранённых видов</option></select><button id="restore-view">Открыть</button><button id="delete-view" aria-label="Удалить сохранённый вид">×</button></div></details>
+          <details><summary>Скачать 3D-модель</summary><p>Сохраняется целая модель с фасками. Разрез и рентген — только просмотр.</p><div class="model-export-actions"><button id="export-stl">↓ STL · печать</button><button id="export-glb">↓ GLB · 3D</button><button id="export-3mf" type="button">↓ 3MF · печать</button></div></details>
+        </div>
+        <div class="model-feedback" id="model-feedback"><strong id="model-status" role="status" aria-live="polite">Начертите замкнутый контур</strong><span id="model-stats"></span><ul id="model-errors"></ul></div>
+        <div class="model-tool-area"><div class="model-tool-label"><span id="model-tool-name">Инструмент</span><button id="choose-contour">Чертить контур <span>↗</span></button></div><div id="model-tool-slot"></div></div>
+        <details class="model-guide"><summary>Как получить отверстие?</summary><p>Начертите замкнутый контур внутри другого. Он станет сквозным отверстием на всю высоту. Подойдут окружности и многоугольники. Контуры не должны касаться или пересекаться.</p><p>Проверяются видимые слои: соедините свободные концы, удалите лишние линии или скройте вспомогательный слой. Небольшие зазоры до 2 мм соединяются при построении.</p></details>
+        </div>
+        <button id="model-resize" title="Изменить размер окна" aria-label="Изменить размер окна модели">◢</button>
+      </aside>
+    </main>
+    <footer class="statusbar"><div class="paper-settings"><button id="toggle-grid" class="text-button active" aria-pressed="true"><svg><use href="#i-grid"/></svg><span>Сетка</span></button><span class="status-divider"></span><label class="snap-label"><input id="snap" type="checkbox"><span class="switch"></span>Привязка <span class="snap-detail">5 мм</span></label></div><p class="author">Проект ученика 8 «Е» класса — Тимофей М.</p><span id="save-status" class="save-status"><span class="live-dot"></span>Сохраняется в браузере</span></footer>
+  </div>
+  
+  <dialog id="welcome-dialog" class="welcome-dialog" aria-labelledby="welcome-dialog-title">
+    <div class="welcome-brand"><span class="brand-mark"><svg><use href="#i-compass"/></svg></span><span>ЛАБОРАТОРИЯ ЧЕРЧЕНИЯ</span><span class="welcome-dot"></span></div>
+    <span class="eyebrow">НОВЫЙ ЛИСТ. НОВЫЕ ИДЕИ.</span><h2 id="welcome-dialog-title">Всё начинается<br>с чистого листа<span class="mint-period">.</span></h2><p class="welcome-subtitle">Выберите, как расположить лист.<br>Инструменты уже на столе — можно творить.</p>
+    <div class="orientation-choices" role="group" aria-label="Ориентация листа"><button class="orientation-choice selected" data-orientation="landscape" aria-pressed="true"><span class="sheet-preview horizontal"><i></i><i></i><i></i><i></i><i></i></span><strong>Горизонтально</strong><small>Больше места для идей</small><span class="choice-check"><svg><use href="#i-check"/></svg></span></button><button class="orientation-choice" data-orientation="portrait" aria-pressed="false"><span class="sheet-preview vertical"><i></i><i></i><i></i><i></i><i></i></span><strong>Вертикально</strong><small>Для высоких построений</small><span class="choice-check"><svg><use href="#i-check"/></svg></span></button></div>
+    <button class="primary-button start-button" id="start">Начать чертить <span>↗</span></button><button id="continue" class="continue-button" hidden>Продолжить сохранённый рисунок →</button><button id="cancel-welcome" class="continue-button" hidden>Вернуться к текущему листу</button><p class="welcome-author">Проект ученика 8 «Е» класса — Тимофей М.</p>
+  </dialog>
+  <dialog id="action-dialog" class="action-dialog" aria-labelledby="action-dialog-title"><button class="dialog-close icon-button" id="close-dialog" aria-label="Закрыть"><svg><use href="#i-close"/></svg></button><div id="dialog-content"></div></dialog>
+  <button id="layers-toggle" class="studio-fab glass" aria-label="Слои" aria-controls="layers-panel" aria-expanded="false"><svg><use href="#i-layers"/></svg><span>Слои</span></button>
+  <button id="focus-restore" class="studio-fab glass" hidden><svg><use href="#i-fit"/></svg><span>Вернуть панели</span></button>
+  <button id="model-bubble" class="studio-fab glass" hidden><svg><use href="#i-cube"/></svg><span>3D-модель</span></button>
+  <section id="studio-menu" class="studio-popover glass" hidden aria-label="Меню лаборатории"><div class="popover-heading"><strong>Лаборатория</strong><button id="menu-close" class="icon-button" aria-label="Закрыть меню">×</button></div><div id="document-actions"></div><button id="lab-workbench-launch" type="button"><svg aria-hidden="true"><use href="#i-compass"/></svg>Лаборатория и практикумы</button><button id="workshop-launch"><svg><use href="#i-layers"/></svg>Мастерская</button><button id="experiment-launch" type="button"><svg aria-hidden="true"><use href="#i-compass"/></svg>Эксперимент</button><button id="fullscreen-toggle"><svg><use href="#i-fit"/></svg>Полный экран</button><button id="about-project"><svg><use href="#i-compass"/></svg>О проекте</button><div id="paper-settings-slot"></div></section>
+  <section id="layers-panel" class="studio-popover glass" hidden aria-label="Слои чертежа"><div class="popover-heading"><strong>Слои</strong><button id="layers-close" class="icon-button" aria-label="Закрыть слои">×</button></div><div id="layer-list"></div><button id="layer-add">+ Добавить слой</button><p class="popover-note">В 3D и изображение входят видимые слои. Рисование — в выбранном слое.</p></section>
+  <div id="minimap-wrap" class="glass" hidden><span>НАВИГАЦИЯ</span><svg id="minimap" viewBox="0 0 1188 840" role="img" tabindex="0" aria-label="Мини-карта. Нажмите, чтобы перейти к части листа."></svg></div>
+  <div id="cad-controls" class="glass" hidden><button id="cad-back" title="Вернуться к чертежу">← Чертёж</button><button id="cad-actions" title="Действия с моделью (Пробел)" aria-label="Действия с моделью">✦</button><button id="cad-technical" aria-pressed="false" title="Техническая иллюстрация" aria-label="Техническая иллюстрация">⌗</button><button id="cad-detach" title="Показать модель отдельным окном" aria-label="Модель отдельным окном">▣</button><button id="cad-measure" type="button" data-workshop-shortcut="caliper" title="Штангенциркуль" aria-label="Штангенциркуль">↔</button><button id="cad-present" title="Режим презентации" aria-label="Режим презентации">▷</button></div>
+  <svg id="cad-overlay" aria-label="Размеры и построения модели"></svg>
+  <div id="cad-context" class="glass" hidden role="toolbar" aria-label="Действия выбранной детали"></div>
+  <section id="cad-parameter" class="glass" hidden aria-label="Параметры операции"></section>
+  <nav id="cad-radial" class="glass" hidden aria-label="Быстрые операции"></nav>
+  <div id="cad-task" class="glass" hidden><span id="cad-task-text"></span><button id="cad-task-finish">Готово</button><button id="cad-task-cancel" aria-label="Отменить построение">×</button></div>
+  <div id="cad-presentation" class="glass" hidden><button id="cad-spin" aria-pressed="true">Ⅱ Пауза</button><button id="cad-light" title="Переместить источник света">Свет</button><button id="cad-png">↓ PNG</button><button id="cad-video">● Видео 6 с</button><button id="cad-presentation-close">Вернуться</button></div>
+  <input type="file" id="import-file" accept=".json,application/json" hidden>
+</body>
+</html>
